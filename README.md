@@ -22,9 +22,34 @@ To write 8085 microprocessor programs for converting:
 
 ## Program:
 
+LDA 4200H
+MOV B,A
+ANI 0F0H
+RRC
+RRC
+RRC
+RRC
+CPI 0AH
+JC ADD30
+ADI 37H
+JMP STORE1
+ADD30: ADI 30H
+STORE1: STA 4300H
+MOV A,B
+ANI 0FH
+CPI 0AH
+JC ADD30L
+ADI 37H
+JMP STORE2
+ADD30L: ADI 30H
+STORE2: STA 4301H
+HLT
 
 ## Output:
 
+![MPMC EXP 4a](https://github.com/user-attachments/assets/3e8b0ab8-99c2-4352-a752-20fccd7dd482)
+
+![mpmc exp 4b](https://github.com/user-attachments/assets/58fd9350-7131-4007-ac94-986672c79076)
 
 ## Program 2: ASCII to Hexadecimal Conversion
 
@@ -39,9 +64,34 @@ To write 8085 microprocessor programs for converting:
 ## Program:
 
 
+LDA 4200H;
+CPI 3AH;
+JC SUB30;
+SUI 37H;
+JMP STOREH;
+SUB30: SUI 30H;
+STOREH: MOV C,A;
+LDA 4201H;
+CPI 3AH;
+JC SUB30L;
+SUI 37H;
+JMP STOREL;
+SUB30L: SUI 30H;
+STOREL: MOV B,A;
+MOV A,C;
+RLC
+RLC
+RLC
+RLC 
+ADD B;
+STA 4300H;
+HLT;
+
 ## Output:
 
+![MPMC EXP 4c](https://github.com/user-attachments/assets/14f4f4f2-f055-47ef-a08b-c82256e29185)
 
+![mpmc exp 4d](https://github.com/user-attachments/assets/773bd26c-c03c-45cb-a54d-2d77ed84b66f)
 
 ## Result:
 
